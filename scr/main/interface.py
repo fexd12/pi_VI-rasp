@@ -29,10 +29,8 @@ class Application:
 
     def botoes(self):
         self.cadastrar = Button(self.frame, text="Cadastrar")
-        self.cadastrar.place(relx=0.15, rely=0.35, relwidth=0.3, relheight= 0.2)
-
-        self.leitura = Button(self.frame, text="Leitura")
-        self.leitura.place(relx=0.55, rely=0.35, relwidth=0.3, relheight= 0.2)
+        self.cadastrar.place(relx=0.35, rely=0.38, relwidth=0.3, relheight= 0.2)
+ 
 
 
 Application()
