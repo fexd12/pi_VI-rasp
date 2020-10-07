@@ -26,17 +26,12 @@ class Application(Tk):
         self.title.pack()
 
     def botoes(self):
-<<<<<<< HEAD:scr/main/Application.py
         self.cadastrar = Button(self.frame, text="Cadastrar",command=cadastrar_rfid)
         self.cadastrar.place(relx=0.15, rely=0.35, relwidth=0.3, relheight= 0.2)
 
         self.leitura = Button(self.frame, text="Leitura")
         self.leitura.place(relx=0.55, rely=0.35, relwidth=0.3, relheight= 0.2)
-=======
-        self.cadastrar = Button(self.frame, text="Cadastrar")
-        self.cadastrar.place(relx=0.35, rely=0.38, relwidth=0.3, relheight= 0.2)
  
->>>>>>> 5b0b439da7ff764d81b5a96e199e599c70c41dcd:scr/main/interface.py
 
 if __name__ == '__main__':
     app = Application()
