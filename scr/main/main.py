@@ -1,31 +1,38 @@
 import time
-import RPi.GPIO as GPIO
-import MFRC522
+# import RPi.GPIO as GPIO
+# import MFRC522
 
 Cartoes = {
     # pegar no banco felipe
 }
 
-try:
-    LeitorRFID = MFRC522.MFRC522()
 
-    print('Aproxime seu cartão RFID')
+def cadastrar_rfid():
+    print( 'teste')
 
-    while True:
-        # Verifica se existe uma tag próxima do módulo.
-        status, tag_type = LeitorRFID.MFRC522_Request(LeitorRFID.PICC_REQIDL)
+def ler_rfid():
+    print('TESTE2')
 
-        if status == LeitorRFID.MI_OK:
-            print('Cartão detectado!')
+# try:
+#     LeitorRFID = MFRC522.MFRC522()
 
-            # Efetua leitura do UID do cartão.
-            status, uid = LeitorRFID.MFRC522_Anticoll()
+#     print('Aproxime seu cartão RFID')
 
-            if status == LeitorRFID.MI_OK:
-                uid = ':'.join(['%X' % x for x in uid])
-                print('UID do cartão: %s' % uid)
+#     while True:
+#         # Verifica se existe uma tag próxima do módulo.
+#         status, tag_type = LeitorRFID.MFRC522_Request(LeitorRFID.PICC_REQIDL)
 
-    time.sleep(.25)
-except KeyboardInterrupt:
-    GPIO.cleanup()
-    print('nPrograma encerrado.')
+#         if status == LeitorRFID.MI_OK:
+#             print('Cartão detectado!')
+
+#             # Efetua leitura do UID do cartão.
+#             status, uid = LeitorRFID.MFRC522_Anticoll()
+
+#             if status == LeitorRFID.MI_OK:
+#                 uid = ':'.join(['%X' % x for x in uid])
+#                 print('UID do cartão: %s' % uid)
+
+#     time.sleep(.25)
+# except KeyboardInterrupt:
+#     GPIO.cleanup()
+#     print('nPrograma encerrado.')
