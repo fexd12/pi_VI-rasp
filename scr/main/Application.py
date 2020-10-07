@@ -4,7 +4,7 @@ from main import cadastrar_rfid,ler_rfid
 
 class Application():
     def __init__(self, root):
-        self.tag = "123456789"
+        self.tag = ""
         self.root = root
         self.tela()
         self.frame()
@@ -24,11 +24,6 @@ class Application():
         self.frame = Frame(self.root, bd = 4, bg = "#fff", highlightbackground="#759fe6", highlightthickness=2)
         self.frame.place(relx=0.1, rely= 0.1, relwidth= 0.8, relheight= 0.8)
 
-        imagem = PhotoImage(file="main/icons/teste.png")
-        self.w = Label(self.root, image=imagem, bg="#fff")
-        self.w.imagem = imagem
-        self.w.place(relx=0.785, rely= 0.71)
-        
       
 
     
