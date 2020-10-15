@@ -4,10 +4,10 @@ from . import cadastro
 from leitura_tag import leitura
 
 
-class Application(Tk):
-    def __init__(self):
-        super().__init__()
-        self.root = Tk()
+class Application():
+    def __init__(self, root):
+        self.tag = ""
+        self.root = root
         self.tela()
         self.frame()
         self.title()
@@ -22,20 +22,33 @@ class Application(Tk):
     def frame(self):
         self.frame = Frame(self.root, bd = 4, bg = "#fff", highlightbackground="#759fe6", highlightthickness=2)
         self.frame.place(relx=0.1, rely= 0.1, relwidth= 0.8, relheight= 0.8)
+
+      
+
     
     def title(self):
-        self.title = Label(self.frame, text="Interface RFID")
+        self.title = Label(self.frame, text="Interface RFID", bg="#fff")
         self.title["font"] = ("Arial", "14", "italic", "bold")
         self.title.pack()
 
     def botoes(self):
-        self.cadastrar = Button(self.frame, text="Cadastrar",command=cadastro)
-        self.cadastrar.place(relx=0.15, rely=0.35, relwidth=0.3, relheight= 0.2)
+        self.leitura = Button(self.frame, text="Leitura")
+        self.leitura.place(relx=0.15, rely=0.3, relwidth=0.2, relheight= 0.15)
 
-        self.leitura = Button(self.frame, text="Leitura",command=leitura)
-        self.leitura.place(relx=0.55, rely=0.35, relwidth=0.3, relheight= 0.2)
+
+        self.lb_leitura = Label(self.frame, text="Código da Tag : ", bg="#fff")
+        self.lb_leitura.place(relx=0.38, rely=0.3, relwidth=0.22, relheight= 0.15)
+
+        self.entry_leitura = Label(self.frame, text=self.tag)
+        self.entry_leitura["font"] = ("Arial", "10", "bold")
+        self.entry_leitura.place(relx=0.65, rely=0.3, relwidth=0.2, relheight= 0.15)
+
+        self.cadastrar = Button(self.frame, text="Cadastrar",command=cadastro, bg="green", fg="white")
+        self.cadastrar.place(relx=0.35, rely=0.6, relwidth=0.3, relheight= 0.2)
+    
+        
  
 
 if __name__ == '__main__':
-    app = Application()
-    app.mainloop()
+    root = Tk()
+    app = Application(root)
