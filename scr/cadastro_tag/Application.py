@@ -1,7 +1,7 @@
 from tkinter import *
-from . import cadastro
+# from . import cadastro
 
-from leitura_tag import leitura
+# from leitura_tag import leitura
 
 
 class Application():
@@ -12,6 +12,7 @@ class Application():
         self.frame()
         self.title()
         self.botoes()
+        self.root.mainloop()
         
     def tela(self):
         self.root.title("Interface do RFID")
@@ -23,9 +24,6 @@ class Application():
         self.frame = Frame(self.root, bd = 4, bg = "#fff", highlightbackground="#759fe6", highlightthickness=2)
         self.frame.place(relx=0.1, rely= 0.1, relwidth= 0.8, relheight= 0.8)
 
-      
-
-    
     def title(self):
         self.title = Label(self.frame, text="Interface RFID", bg="#fff")
         self.title["font"] = ("Arial", "14", "italic", "bold")
@@ -35,7 +33,6 @@ class Application():
         self.leitura = Button(self.frame, text="Leitura")
         self.leitura.place(relx=0.15, rely=0.3, relwidth=0.2, relheight= 0.15)
 
-
         self.lb_leitura = Label(self.frame, text="Código da Tag : ", bg="#fff")
         self.lb_leitura.place(relx=0.38, rely=0.3, relwidth=0.22, relheight= 0.15)
 
@@ -43,7 +40,7 @@ class Application():
         self.entry_leitura["font"] = ("Arial", "10", "bold")
         self.entry_leitura.place(relx=0.65, rely=0.3, relwidth=0.2, relheight= 0.15)
 
-        self.cadastrar = Button(self.frame, text="Cadastrar",command=cadastro, bg="green", fg="white")
+        self.cadastrar = Button(self.frame, text="Cadastrar", bg="green", fg="white") #colocar commando cadastro
         self.cadastrar.place(relx=0.35, rely=0.6, relwidth=0.3, relheight= 0.2)
     
         
