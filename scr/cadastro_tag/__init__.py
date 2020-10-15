@@ -1,0 +1,2 @@
+def cadastro():
+    pass
