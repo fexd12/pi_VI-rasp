@@ -1,8 +1,6 @@
 from tkinter import *
-# from . import cadastro
-
-# from leitura_tag import leitura
-
+# from pi.cadastro_tag import cadastrar
+# from pi.leitura_tag import ler
 
 class Application():
     def __init__(self, root):
@@ -28,9 +26,18 @@ class Application():
         self.title = Label(self.frame, text="Interface RFID", bg="#fff")
         self.title["font"] = ("Arial", "14", "italic", "bold")
         self.title.pack()
+    
+    def leitura_tag(self):
+        # id,text = ler()
+        # self.tag = id
+        pass
+    def cadastrar_tag(self):
+        # cadastrar(self.tag)
+        # self.tag = ''
+        pass
 
     def botoes(self):
-        self.leitura = Button(self.frame, text="Leitura")
+        self.leitura = Button(self.frame,command=self.leitura_tag, text="Leitura")
         self.leitura.place(relx=0.15, rely=0.3, relwidth=0.2, relheight= 0.15)
 
         self.lb_leitura = Label(self.frame, text="Código da Tag : ", bg="#fff")
@@ -40,11 +47,9 @@ class Application():
         self.entry_leitura["font"] = ("Arial", "10", "bold")
         self.entry_leitura.place(relx=0.65, rely=0.3, relwidth=0.2, relheight= 0.15)
 
-        self.cadastrar = Button(self.frame, text="Cadastrar", bg="green", fg="white") #colocar commando cadastro
+        self.cadastrar = Button(self.frame, text="Cadastrar",command=self.cadastrar_tag, bg="green", fg="white")
         self.cadastrar.place(relx=0.35, rely=0.6, relwidth=0.3, relheight= 0.2)
-    
-        
- 
+
 
 if __name__ == '__main__':
     root = Tk()
