@@ -4,4 +4,4 @@ pyinstaller --noconfirm --log-level=WARN ^
 --windowed ^
 --hidden-import="tkinter" ^
 --name=Application ^
-Application.py
+cadastro_tag\Application.py
