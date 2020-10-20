@@ -1,10 +1,12 @@
+# -*- coding: utf-8 -*-
+
 from tkinter import *
-# from pi.cadastro_tag import cadastrar
-# from pi.leitura_tag import ler
+from pi.cadastro_tag import cadastrar
+from pi.leitura_tag import ler
 
 class Application():
     def __init__(self, root):
-        self.tag = "4565654645654654654645645"
+        self.tag = ""
         self.root = root
         self.tela()
         self.frame()
@@ -15,7 +17,7 @@ class Application():
     def tela(self):
         self.root.title("Interface do RFID")
         self.root.configure(background = '#1e3743')
-        self.root.geometry("500x300")
+        self.root.geometry("800x600")
         self.root.resizable(False, False)
 
     def frame(self):
@@ -28,12 +30,12 @@ class Application():
         self.title.pack()
     
     def leitura_tag(self):
-        # id,text = ler()
+        id,text = ler()
         self.tag = id
         self.entry_leitura['text'] = self.tag
     
     def cadastrar_tag(self):
-        # cadastrar(self.tag)
+        cadastrar(self.tag)
         self.entry_leitura['text'] = ''
 
     def botoes(self):
