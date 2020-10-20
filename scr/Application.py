@@ -4,7 +4,7 @@ from tkinter import *
 
 class Application():
     def __init__(self, root):
-        self.tag = ""
+        self.tag = "4565654645654654654645645"
         self.root = root
         self.tela()
         self.frame()
@@ -29,12 +29,12 @@ class Application():
     
     def leitura_tag(self):
         # id,text = ler()
-        # self.tag = id
-        pass
+        self.tag = id
+        self.entry_leitura['text'] = self.tag
+    
     def cadastrar_tag(self):
         # cadastrar(self.tag)
-        # self.tag = ''
-        pass
+        self.entry_leitura['text'] = ''
 
     def botoes(self):
         self.leitura = Button(self.frame,command=self.leitura_tag, text="Leitura")
