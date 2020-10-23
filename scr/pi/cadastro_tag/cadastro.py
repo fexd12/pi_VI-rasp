@@ -5,8 +5,7 @@ def cadastrar(tag):
         'tag' : tag
     }
     try:
-
-        requests.post('http://localhost:2000/tag/',payload)
+        requests.post('http://localhost:2000/tag/',json=payload)
         
     except Exception as e :
         raise
