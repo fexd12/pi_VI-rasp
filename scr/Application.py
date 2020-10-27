@@ -37,6 +37,7 @@ class Application():
     def cadastrar_tag(self):
         cadastrar(self.tag)
         self.entry_leitura['text'] = ''
+        self.tag = ''
 
     def botoes(self):
         self.leitura = Button(self.frame,command=self.leitura_tag, text="Leitura")
