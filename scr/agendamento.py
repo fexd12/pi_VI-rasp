@@ -1,8 +1,30 @@
+# -*- coding: utf-8 -*-
 
-import datetime
-import requests
+import datetime,time,requests
 import RPi.GPIO as GPIO
-from . import leitura
+from config import Config
+from pi.leitura_tag import ler
+
+def reles(acesso):
+
+    if acesso:
+        GPIO.output(pino_rele_1,1)
+        GPIO.output(pino_rele_2,1)
+    elif not acesso:
+        GPIO.output(pino_rele_1,1)
+        GPIO.output(pino_rele_2,0)
+    elif acesso == 3:
+        GPIO.output(pino_rele_1,0)
+        GPIO.output(pino_rele_2,0)
+
+def time_atual():
+    data = datetime.datetime.today()
+
+    data_atual = str(data.year) + '-' + str(data.month) + '-' + str(data.day)
+
+    hora_atual = str(data.hour) + ':' + str(data.minute)
+
+    return data_atual,hora_atual
 
 pino_rele_1 = 20
 pino_rele_2 = 21
@@ -11,6 +33,9 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(pino_rele_1, GPIO.OUT)
 GPIO.setup(pino_rele_2, GPIO.OUT)
 
+conf = Config()
+
+reles(3)
 
 """
 void httpGetAgendamento(String path)
@@ -86,31 +111,33 @@ void httpGetAgendamento(String path)
 } """
 
 
-
-def reles():
-    if GPIO.input(pino_rele_1) == 0:
-        GPIO.output(pino_rele_1,1)
-    elif GPIO.input(pino_rele_1) == 1:
-
-        GPIO.output(pino_rele_1,1)
-
-url = 'sdasdasd'
-
 #agendamento_tag = url + + leitura()
 
-response = requests.get(url)  # pegar agendamento
-agendamento = response.json()
-print(agendamento)
+while True:
 
-data_atual = datetime.date.day + ':' + datetime.date.month
-hora_atual = ''
+    tag,_ = ler()
 
+    response = requests.get(conf.HOST + '/tag/agendamento/' + tag)  # pegar agendamento
+    agendamento = response.json()
+    print(agendamento)
 
-if agendamento['acesso'] and agendamento['data'] == data_atual and agendamento['hora'] == hora_atual:
-    pass
+    data_atual,hora_atual  = time_atual()
 
-elif not agendamento['acesso'] and agendamento['data'] == data_atual and agendamento['hora'] == hora_atual:
-    pass
+    if agendamento['acesso'] and agendamento['data'] == data_atual and agendamento['hora'] == hora_atual:
+        print('acesso 1')
+        while agendamento['hora_final'] == hora_atual:
+            reles(1)
+            time.sleep(60)
+            _,hora_atual = time_atual()
+        reles(3)
 
-else:
-    print('erro')
+    elif not agendamento['acesso'] and agendamento['data'] == data_atual and agendamento['hora'] == hora_atual:
+        print('acesso 0')
+        while agendamento['hora_final'] == hora_atual:
+            reles(0)
+            time.sleep(60)
+            _,hora_atual = time_atual()
+        reles(3)
+
+    else:
+        print('erro')

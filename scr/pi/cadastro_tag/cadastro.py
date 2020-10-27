@@ -1,13 +1,14 @@
 import requests
+from config import Config
+
+conf = Config()
 
 def cadastrar(tag):
     payload = {
         'tag' : tag
     }
     try:
-        requests.post('http://localhost:2000/tag/',json=payload)
+        requests.post(str(conf.HOST) + '/tag/',json=payload)
         
     except Exception as e :
         raise
-
-    # realizar cadsatro tag

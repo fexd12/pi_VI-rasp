@@ -3,3 +3,5 @@ venv
 dist
 *.spec
 .vscode
+*.egg-info
+.env
